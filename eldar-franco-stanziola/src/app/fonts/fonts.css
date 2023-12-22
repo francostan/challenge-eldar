@@ -1,0 +1,27 @@
+/* Regular */
+@font-face {
+    font-family: 'Just Sans';
+    src: url('./JUST\ Sans\ Regular.otf') format('truetype');
+   }
+   
+   /* Bold */
+   @font-face {
+    font-family: 'Just Sans';
+    src: url('./JUST\ Sans\ Regular.otf') format('truetype');
+    font-weight: bold;
+   }
+   
+   /* Italic */
+   @font-face {
+    font-family: 'Just Sans';
+    src: url('./JUST\ Sans\ Regular.otf') format('truetype');
+    font-style: italic;
+   }
+   
+   /* Bold Italic */
+   @font-face {
+    font-family: 'Just Sans';
+    src: url('./JUST\ Sans\ Regular.otf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+   }
