@@ -1,99 +1,22 @@
 "use client";
 import React from 'react';
-import {useForm}  from 'react-hook-form';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from "next/link";
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import LoginCard from '@/app/components/ui/cards/LoginCard';
+import { Container } from '@mui/material';
 
 
 export default function Login() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  
-
- const onSubmit = (data) => {
-   console.log(data);
- };
-
- return (
-  <Container component="main" maxWidth="xs">
-  <CssBaseline />
-  <Box
-    sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '100vh', // Para centrar verticalmente
-    }}
-  >
-    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-      <LockOutlinedIcon />
-    </Avatar>
-    <Typography component="h1" variant="h5">
-      Sign in
-    </Typography>
-    <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1, width: '100%' }}>
-      <TextField
-        margin="normal"
-        required
-        fullWidth
-        id="email"
-        label="Email Address"
-        name="email"
-        autoComplete="email"
-        autoFocus
-        {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-      />
-      {errors.email && <p>Por favor, ingresa un correo electrónico válido.</p>}
-      <TextField
-        margin="normal"
-        required
-        fullWidth
-        name="password"
-        label="Password"
-        type="password"
-        id="password"
-        autoComplete="current-password"
-        {...register('password', { required: true, minLength: 8 })}
-      />
-      {errors.password && <p>La contraseña debe tener al menos 8 caracteres.</p>}
-      <FormControlLabel
-        control={<Checkbox value="remember" color="primary" />}
-        label="Remember me"
-      />
-      <Button
-        type="submit"
-        fullWidth
-        variant="contained"
-        color="primary"
-        sx={{ mt: 3, mb: 2 }}
-      >
-        Sign In
-      </Button>
-      <Grid container justifyContent="flex-end">
-        <Grid item xs>
-          <Link href="#" variant="body2">
-            Forgot password?
-          </Link>
-        </Grid>
-        <Grid item>
-          <Link href="#" variant="body2">
-            {"Don't have an account? Sign Up"}
-          </Link>
-        </Grid>
-      </Grid>
-    </Box>
-  </Box>
-</Container>
- );
-}
+  return (
+    <Container
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh', 
+        backgroundColor: '#f4f4f4',
+      }}
+    >
+      <LoginCard />
+    </Container>
+  );
+};

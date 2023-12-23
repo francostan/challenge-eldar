@@ -11,7 +11,7 @@ const HomePage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh", // Esto asegura que el contenido esté centrado verticalmente en la pantalla
+        minHeight: "100vh",
       }}
     >
       <Home />

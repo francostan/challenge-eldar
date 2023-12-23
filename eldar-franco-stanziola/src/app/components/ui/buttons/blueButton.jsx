@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-const blueButton = ({ startIcon, text }) => {
+const BlueButton = ({ startIcon, text, type }) => {
   return (
     <div>
       <Button
@@ -12,6 +12,7 @@ const blueButton = ({ startIcon, text }) => {
           "&:hover": { backgroundColor: "#1565C0" },
         }}
         startIcon={startIcon}
+        type={type ? type : "button"}
       >
         {text}
       </Button>
@@ -19,4 +20,4 @@ const blueButton = ({ startIcon, text }) => {
   );
 };
 
-export default blueButton;
+export default BlueButton;
