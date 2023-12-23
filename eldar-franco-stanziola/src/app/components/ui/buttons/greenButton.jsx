@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
 import Button from "@mui/material/Button";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
-const GreenButton = ({ startIcon, text, routeToPush }) => {
+const GreenButton = ({ startIcon, text, routeToPush, type }) => {
   return (
     <div>
           <Button
@@ -15,7 +14,8 @@ const GreenButton = ({ startIcon, text, routeToPush }) => {
               "&:hover": { backgroundColor: "#388E3C" },
             }}
             startIcon={startIcon}
-            component={Link} href={routeToPush}
+            component={Link} href={routeToPush || "#"}
+            type={type ? type : "button"}
           >
             {text}
           </Button>

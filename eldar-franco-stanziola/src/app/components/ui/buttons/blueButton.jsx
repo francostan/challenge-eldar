@@ -1,7 +1,9 @@
+"use client";
+import Link from "next/link"
 import React from "react";
 import Button from "@mui/material/Button";
 
-const BlueButton = ({ startIcon, text, type }) => {
+const BlueButton = ({ startIcon, text, routeToPush, type }) => {
   return (
     <div>
       <Button
@@ -11,6 +13,7 @@ const BlueButton = ({ startIcon, text, type }) => {
           backgroundColor: "#1976D2",
           "&:hover": { backgroundColor: "#1565C0" },
         }}
+        component={Link} href={routeToPush || "#"}
         startIcon={startIcon}
         type={type ? type : "button"}
       >

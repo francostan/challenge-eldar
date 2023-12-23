@@ -12,52 +12,8 @@ import {
 import { Email, Lock, Login } from '@mui/icons-material';
 import BlueButton from '../buttons/blueButton';
 
-const classes = {
-    cardContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f5f5f5',
-    },
-    card: {
-        width: 400,
-        padding: '32px',
-        borderRadius: '12px',
-        boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)',
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '24px',
-    },
-    centerText: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginBottom: '32px',
-    },
-    avatar: {
-        backgroundColor: '#1976D2',
-        marginBottom: '16px',
-    },
-    textField: {
-        marginBottom: '24px',
-    },
-    buttonContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-    },
-    iconMargin: {
-        marginRight: '8px',
-    },
 
-    typographyError: {
-        marginBottom: "8px",
-    }
-};
-
-const LoginCard = () => {
+const LoginCard = ({classes}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [emailValid, setEmailValid] = useState(true);

@@ -33,7 +33,7 @@ const Home = ({router}) => {
                <GreenButton startIcon={<LoginIcon />} text="Iniciar sesion" routeToPush={"auth/login"} />
              </Grid>
              <Grid item>
-               <BlueButton startIcon={<RegisterIcon />} text="Registrarse" />
+               <BlueButton startIcon={<RegisterIcon />} text="Registrarse" routeToPush={"auth/register"} />
              </Grid>
            </Grid>
          </Box>
