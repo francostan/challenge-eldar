@@ -1,9 +1,10 @@
 "use client";
-import Link from "next/link"
 import React from "react";
 import Button from "@mui/material/Button";
+import { useRouter } from "next/navigation";
 
 const BlueButton = ({ startIcon, text, routeToPush, type }) => {
+  const router = useRouter();
   return (
     <div>
       <Button
@@ -13,9 +14,11 @@ const BlueButton = ({ startIcon, text, routeToPush, type }) => {
           backgroundColor: "#1976D2",
           "&:hover": { backgroundColor: "#1565C0" },
         }}
-        component={Link} href={routeToPush || "#"}
         startIcon={startIcon}
         type={type ? type : "button"}
+        onClick={() => {
+          if (routeToPush) router.push(routeToPush);
+        }}
       >
         {text}
       </Button>

@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import LoginCard from '@/app/components/ui/cards/LoginCard';
+import LoginCard from '../../components/ui/cards/LoginCard';
 import { Container } from '@mui/material';
 
 const classes = {
