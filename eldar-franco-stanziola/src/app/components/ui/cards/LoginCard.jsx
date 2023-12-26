@@ -67,7 +67,7 @@ const LoginCard = ({ classes }) => {
 
       if (data.message === "Invalid credentials") {
         setError("Email o contraseña incorrecta");
-      } else if (data.firstName) {
+      } else if (data.name) {
         localStorage.setItem("token", data.id);
         router.push("/");
       }

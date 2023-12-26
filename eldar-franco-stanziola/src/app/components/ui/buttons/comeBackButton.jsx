@@ -2,11 +2,12 @@ import { useRouter } from 'next/navigation';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const BackButton = () => {
+const BackButton = ({handleClose}) => {
   const router = useRouter();
 
   const handleBack = () => {
-    router.back();
+    if(handleClose) handleClose();
+    else router.back();
   };
 
   return (

@@ -17,12 +17,67 @@ import { Audio } from "react-loader-spinner";
 import GreenButton from "../buttons/greenButton";
 import { countryCodes } from "../../../utils";
 
-const RegisterCard = ({ classes }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+const classes = {
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '100vh',
+    backgroundColor: '#f4f4f4',
+    padding: '20px',
+  },
+  cardContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 'auto', 
+    maxWidth: '500px',
+    backgroundColor: '#f5f5f5',
+    padding: '20px', 
+  },
+  card: {
+    width: '100%',
+    padding: '32px',
+    borderRadius: '12px',
+    boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '24px',
+  },
+  centerText: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginBottom: '12px',
+  },
+  avatar: {
+    backgroundColor: '#1976D2',
+    marginBottom: '8px',
+  },
+  textField: {
+    marginBottom: '5px',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  iconMargin: {
+    marginRight: '8px',
+  },
+
+  typographyError: {
+    marginBottom: "8px",
+  }
+};
+
+
+const RegisterCard = ({ user, handleClose, handleEditUser }) => {
+  const [name, setName] = useState(user.name || "");
+  const [email, setEmail] = useState(user.email || "");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState(user.phone || "");
   const [countryCode, setCountryCode] = useState("+54");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -61,14 +116,21 @@ const RegisterCard = ({ classes }) => {
 
   const fetchToRegister = async () => {
     try {
+      if (user && handleEditUser) {
+        user.name = name;
+        user.email = email;
+        user.password = password;
+        user.phone = countryCode + phone;
+        handleEditUser(user);
+        handleClose();
+      } else {
       const response = await fetch("/api/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstName,
-          lastName,
+          name,
           email,
           password,
           phone: countryCode + phone,
@@ -81,6 +143,7 @@ const RegisterCard = ({ classes }) => {
       } else {
         setError("An error occurred while registering");
       }
+    }
     } catch (error) {
       setError("An error occurred while registering");
     } finally {
@@ -91,31 +154,23 @@ const RegisterCard = ({ classes }) => {
   return (
     <Container style={classes.cardContainer}>
       <Card style={classes.card}>
-        <BackButton />
+        <BackButton handleClose={handleClose} />
         <CardContent>
           <Box style={classes.centerText}>
             <Avatar style={classes.avatar}>
               <Lock />
             </Avatar>
             <Typography variant="h5" gutterBottom>
-              Registrarse
+              {!user.name ? "Registrarse" : "Editar usuario"}
             </Typography>
           </Box>
           <form style={classes.form} onSubmit={handleRegister}>
             <TextField
               fullWidth
-              label="Nombre"
+              label="Nombre Completo"
               variant="outlined"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              style={classes.textField}
-            />
-            <TextField
-              fullWidth
-              label="Apellido"
-              variant="outlined"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               style={classes.textField}
             />
             <TextField
@@ -178,7 +233,7 @@ const RegisterCard = ({ classes }) => {
             <Box style={classes.buttonContainer}>
               <GreenButton
                 startIcon={<PersonAdd />}
-                text="Registrarse"
+                text={!user.name ? "Registrarse" : "Editar usuario"}
                 type="submit"
               />
             </Box>

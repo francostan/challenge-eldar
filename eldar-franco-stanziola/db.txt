@@ -1,1 +1,1 @@
-[{"firstName":"Franco","lastName":"Stanziola","email":"franco@gmail.com","password":"156178655F","phone":"+542613467835","id":960907,"isAdmin":true}]
+[{"name":"Franco Stanziola","email":"franco@gmail.com","password":"12345678F","phone":"+542613467835","id":960907,"isAdmin":true}]
