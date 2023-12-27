@@ -74,10 +74,10 @@ const classes = {
 
 
 const RegisterCard = ({ user, handleClose, handleEditUser }) => {
-  const [name, setName] = useState(user.name || "");
-  const [email, setEmail] = useState(user.email || "");
+  const [name, setName] = useState(user?.name || "");
+  const [email, setEmail] = useState(user?.email || "");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState(user.phone || "");
+  const [phone, setPhone] = useState(user?.phone || "");
   const [countryCode, setCountryCode] = useState("+54");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -161,7 +161,7 @@ const RegisterCard = ({ user, handleClose, handleEditUser }) => {
               <Lock />
             </Avatar>
             <Typography variant="h5" gutterBottom>
-              {!user.name ? "Registrarse" : "Editar usuario"}
+              {!user?.name ? "Registrarse" : "Editar usuario"}
             </Typography>
           </Box>
           <form style={classes.form} onSubmit={handleRegister}>
@@ -233,7 +233,7 @@ const RegisterCard = ({ user, handleClose, handleEditUser }) => {
             <Box style={classes.buttonContainer}>
               <GreenButton
                 startIcon={<PersonAdd />}
-                text={!user.name ? "Registrarse" : "Editar usuario"}
+                text={!user?.name ? "Registrarse" : "Editar usuario"}
                 type="submit"
               />
             </Box>
